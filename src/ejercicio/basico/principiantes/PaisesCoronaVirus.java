@@ -72,7 +72,7 @@ public class PaisesCoronaVirus {
 		System.out.println("\n*****************************\n");
 		System.out.println("Total infectados entre los " + (Paises.length - 1) + " paises: " + totalinfectados);
 
-		System.out.println("");
+		System.out.println(" ");
 		sc.close();
 
 	}// fin main
