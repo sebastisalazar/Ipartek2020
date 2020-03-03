@@ -46,6 +46,8 @@ public class PaisesCoronaVirus {
 
 			} // FIN IF
 
+			// if i<PAISES.length
+
 			System.out.println(" \n*************************************************\n");
 
 		} // FIN FOR
