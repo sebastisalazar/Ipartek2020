@@ -26,15 +26,13 @@ public class PaisesPruebas {
 
 			// pregunta el numero de infectados
 			System.out.print("Está infectado?(s/n): ");
-			String resp = sc.nextLine();
 
 			// Condicion para los infectados
-			if ("s".equalsIgnoreCase(resp)) {
+			if ("s".equalsIgnoreCase(sc.nextLine())) {
 
-				// inicilizamos la variable para pasarla por parametro
-				boolean infectado = true;
+				
 				// damos valor al atributo infectado del objeto
-				p.setInfectado(infectado);
+				p.setInfectado(true);
 
 				// Pregunta el numero de casos
 				System.out.print("Indica el número de casos:");
@@ -78,7 +76,7 @@ public class PaisesPruebas {
 				// FOR PARA SABER LOS PAISES NO INFECTADOS
 				for (int j = 0; j < paises.length; j++) {
 
-					boolean infectado = false;
+					
 					if (paises[j].isInfectado()) {
 						System.out.println(paises[j].getNombre() + ", " + paises[j].getNumeroInfectados() + " casos");
 					} else {
@@ -90,7 +88,10 @@ public class PaisesPruebas {
 				System.out.print("Total INFECTADOS: " + totalinf);
 				System.out.println("\n\n********************************");
 			} // FIN IF
+			
+		
 		} // FIN FOR
+		sc.close();
 
 	}
 
