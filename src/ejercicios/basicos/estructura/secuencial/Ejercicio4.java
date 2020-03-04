@@ -14,7 +14,7 @@ public class Ejercicio4 {
 		System.out.println("Introduce los grados centígrados: ");
 		int gradosC = 0;
 		Scanner sc = new Scanner(System.in);
-		gradosC = sc.nextInt();
+		gradosC = Integer.parseInt(sc.nextLine());
 		sc.close();
 
 		System.out.println(
