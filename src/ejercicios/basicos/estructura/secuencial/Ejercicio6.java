@@ -1,5 +1,7 @@
 package ejercicios.basicos.estructura.secuencial;
 
+import java.util.Scanner;
+
 public class Ejercicio6 {
 
 	/**
@@ -11,6 +13,15 @@ public class Ejercicio6 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		double velocidad;
+		System.out.print("Velocidad en km/h: ");
+		velocidad = sc.nextDouble();
+
+		System.out.println("Velocidad pasada a m/s: " + velocidad * 1000 / 3600);
+		sc.close();
 
 	}
 

@@ -21,6 +21,7 @@ public class Ejercicio5 {
 
 		System.out.println("La longitud de la circunferencia es: " + (2 * Math.PI * radio));
 		System.out.println("El area de la circunferencia es: " + Math.PI * Math.pow(radio, 2));
+		sc.close();
 
 	}// fin main
 
