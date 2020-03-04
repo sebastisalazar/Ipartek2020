@@ -20,7 +20,7 @@ public class Pais {
 	// TO STRING
 	@Override
 	public String toString() {
-		return "nombre=" + nombre + ", numeroInfectados=" + numeroInfectados + ", isInfectado=" + isInfectado;
+		return nombre + ", numeroInfectados=" + numeroInfectados + ", isInfectado=" + isInfectado;
 	}
 
 	public String getNombre() {
