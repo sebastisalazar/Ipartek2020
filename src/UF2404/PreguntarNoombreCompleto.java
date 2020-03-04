@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class PreguntarNoombreCompleto {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		// Preguntar nombre
 		// Preguntar 1er apellido

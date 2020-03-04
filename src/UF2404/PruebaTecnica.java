@@ -3,7 +3,6 @@ package UF2404;
 public class PruebaTecnica {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		System.out.println("**Empezamos el bucle");
 		System.out.println("Prueba tecnica");

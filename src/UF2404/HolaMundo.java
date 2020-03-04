@@ -8,7 +8,7 @@ package UF2404;
 
 public class HolaMundo {
 
-	// TODO nuestro codigo para ejecutar debe estar dentro del main
+	// Todo nuestro codigo para ejecutar debe estar dentro del main
 	// Las clases empiezan con Mayúsculas
 	// Las variables empiezan con Minúsculas
 	public static void main(String[] args) {
