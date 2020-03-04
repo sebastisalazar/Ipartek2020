@@ -14,14 +14,14 @@ public class PaisesArrayList {
 
 		do {
 			menu();
-			System.out.print("\nElige una opcion:");
+			System.out.print("\nElige una opcion: ");
 			op = Integer.parseInt(sc.nextLine());
 
 			// CONDICION PARA CONTROLAR LA OPCION ELEGIDA
-			// SI LA OPCION ES MENOR QUE 1 Y DISTINTA A 5 Ó SI LA OPCION ES MAYOR QUE 5 SACA
+			// SI LA OPCION ES MENOR QUE 1 Y DISTINTA A 5 ï¿½ SI LA OPCION ES MAYOR QUE 5 SACA
 			// MENSAJE DE ERROR
 			if (op < 1 && op != 5 || op > 5) {
-				System.out.println("\nOpción no reconocida, inténtalo otra vez\n\n**************************\n");
+				System.out.println("\nOpciï¿½n no reconocida, intï¿½ntalo otra vez\n\n**************************\n");
 			} else { // SI LA OPCION ELEGIDA ES CORRECTA
 				switch (op) {
 				case 1:
@@ -39,10 +39,15 @@ public class PaisesArrayList {
 				case 3:
 					System.out.println("\n****************************************************\n"
 							+ "\n OPCION ELEGIDA: ELIMINAR PAIS\n");
-					if (EliminarPais() == 0) {
-						op = 0;
-					}
-					;
+					EliminarPais();
+					op = 0;
+					break;
+				case 4:
+					
+					System.out.println("\n****************************************************\n"
+							+ "\n OPCION ELEGIDA: BUSCAR PAIS\n");
+					BuscarPais();
+					op = 0;
 					break;
 				case 5:
 					op = 5;
@@ -66,7 +71,7 @@ public class PaisesArrayList {
 	static int listarPaises() {
 
 		if (listaPaises.size() == 0) {
-			System.out.println("\nTodavía no existen paises registrados en la lista\n"
+			System.out.println("\nTodavï¿½a no existen paises registrados en la lista\n"
 					+ "\n****************************************************\n\n");
 			return 0;// SI NO HAY PAISES EN LA LISTA DEVUELVE 0
 		} else {
@@ -84,7 +89,7 @@ public class PaisesArrayList {
 
 		Pais p = new Pais();
 
-		System.out.print("\nIntroduce el nombre del pais:");
+		System.out.print("\nIntroduce el nombre del pais: ");
 		p.setNombre(sc.nextLine());
 		System.out.print("\nExisten casos de corona virus en el pais? (s/n): ");
 
@@ -106,18 +111,52 @@ public class PaisesArrayList {
 		int indice;
 
 		if (listaPaises.size() == 0) {
-			System.out.println("\nTodavía no existen paises registrados en la lista\n"
+			System.out.println("\nTodavia no existen paises registrados en la lista\n"
 					+ "\n****************************************************\n\n");
 			return 0;// SI NO HAY PAISES EN LA LISTA DEVUELVE 0
 		} else {
 
 			System.out.println("\t LISTADO PAISES");
 			listarPaises();
-			System.out.println("¿Qué país deseas borrar? (Indica el numero en la lista): ");
-
+			System.out.print("Â¿Que pais deseas borrar? (Indica el numero en la lista): ");
+			indice=(Integer.parseInt(sc.nextLine()));
+			listaPaises.remove(indice-1);
+			
+			// TODO REVISAR
+			//System.out.println("\n"+listaPaises.get(indice-1).getNombre().toUpperCase()+" ha sido eliminado correctamente");
+			System.out.println("Se ha eliminado correctamente");
+			
+			System.out.println("\n\n****************************************************\n\n");
 			return 1;
 		}
 
+	}
+	
+	static void BuscarPais(){
+		
+		System.out.print("Escribe el pais a buscar: ");
+		String buscarp=sc.nextLine();
+		int encontradoPosicion=0;
+		boolean encontradoB=false;
+		for (int i = 0; i <=listaPaises.size()-1; i++) {
+			
+			if (listaPaises.get(i).getNombre().equalsIgnoreCase(buscarp)) {
+				
+				encontradoPosicion = i + 1;
+				encontradoB=true;
+				
+			}
+			
+			
+		}
+		
+		if (encontradoB) {
+			System.out.println("\n"+buscarp+" sÃ­ se encuentra en el listado en la posicion"+encontradoPosicion);
+		}else {
+			System.out.println("\n"+buscarp+" no estÃ¡ en el listado de paises");
+
+		}
+		System.out.println("\n\n****************************************************\n\n");
 	}
 
 }// FIN CLASE
