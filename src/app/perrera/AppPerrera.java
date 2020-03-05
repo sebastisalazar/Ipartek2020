@@ -40,8 +40,10 @@ public class AppPerrera {
 	static void IniciarOpcion(int op) {
 		switch (op) {
 		case 1:
-			System.out.println("OPCION ELEDIGA: LISTAR PERROS");
+			System.out.println("\n************************************\n");
+			System.out.println("\n   OPCION ELEDIGA: LISTAR PERROS\n");
 			ListarPerros(dao.getAll());
+			System.out.println("\n************************************\n");
 			break;
 
 		// TODO buscar por ID
