@@ -18,7 +18,8 @@ public class PaisesArrayList {
 			op = Integer.parseInt(sc.nextLine());
 
 			// CONDICION PARA CONTROLAR LA OPCION ELEGIDA
-			// SI LA OPCION ES MENOR QUE 1 Y DISTINTA A 5 � SI LA OPCION ES MAYOR QUE 5 SACA
+			// SI LA OPCION ES MENOR QUE 1 Y DISTINTA A 5 � SI LA OPCION ES MAYOR QUE 5
+			// SACA
 			// MENSAJE DE ERROR
 			if (op < 1 && op != 5 || op > 5) {
 				System.out.println("\nOpci�n no reconocida, int�ntalo otra vez\n\n**************************\n");
@@ -33,20 +34,20 @@ public class PaisesArrayList {
 				case 2:
 					System.out.println("\n****************************************************\n"
 							+ "\n OPCION ELEGIDA: CREAR PAIS\n");
-					CrearPais();
+					crearPais();
 					op = 0;
 					break;
 				case 3:
 					System.out.println("\n****************************************************\n"
 							+ "\n OPCION ELEGIDA: ELIMINAR PAIS\n");
-					EliminarPais();
+					eliminarPais();
 					op = 0;
 					break;
 				case 4:
-					
+
 					System.out.println("\n****************************************************\n"
 							+ "\n OPCION ELEGIDA: BUSCAR PAIS\n");
-					BuscarPais();
+					buscarPais();
 					op = 0;
 					break;
 				case 5:
@@ -71,7 +72,7 @@ public class PaisesArrayList {
 	static int listarPaises() {
 
 		if (listaPaises.size() == 0) {
-			System.out.println("\nTodav�a no existen paises registrados en la lista\n"
+			System.out.println("\nTodavia no existen paises registrados en la lista\n"
 					+ "\n****************************************************\n\n");
 			return 0;// SI NO HAY PAISES EN LA LISTA DEVUELVE 0
 		} else {
@@ -85,7 +86,7 @@ public class PaisesArrayList {
 
 	}// FIN LISTARPAISES
 
-	static void CrearPais() {
+	static void crearPais() {
 
 		Pais p = new Pais();
 
@@ -104,7 +105,7 @@ public class PaisesArrayList {
 		listaPaises.add(p);
 	}// FIN CREAR PAIS
 
-	static int EliminarPais() {
+	static int eliminarPais() {
 
 		// PRIMERO LISTAMOS LOS PAISES PARA QUE EL USUARIO PUEDA ELEGIR CUAL QUIERE
 		// ELIMINAR
@@ -118,42 +119,41 @@ public class PaisesArrayList {
 
 			System.out.println("\t LISTADO PAISES");
 			listarPaises();
-			System.out.print("¿Que pais deseas borrar? (Indica el numero en la lista): ");
-			indice=(Integer.parseInt(sc.nextLine()));
-			listaPaises.remove(indice-1);
-			
-			// TODO REVISAR
-			//System.out.println("\n"+listaPaises.get(indice-1).getNombre().toUpperCase()+" ha sido eliminado correctamente");
-			System.out.println("Se ha eliminado correctamente");
-			
+			System.out.print("�Que pais deseas borrar? (Indica el numero en la lista): ");
+			indice = (Integer.parseInt(sc.nextLine()));
+			System.out.println(
+					"\n" + listaPaises.get(indice - 1).getNombre().toUpperCase() + " ha sido eliminado correctamente");
+			listaPaises.remove(indice - 1);
+
+			// System.out.println("Se ha eliminado correctamente");
+
 			System.out.println("\n\n****************************************************\n\n");
 			return 1;
 		}
 
 	}
-	
-	static void BuscarPais(){
-		
+
+	static void buscarPais() {
+
 		System.out.print("Escribe el pais a buscar: ");
-		String buscarp=sc.nextLine();
-		int encontradoPosicion=0;
-		boolean encontradoB=false;
-		for (int i = 0; i <=listaPaises.size()-1; i++) {
-			
+		String buscarp = sc.nextLine();
+		int encontradoPosicion = 0;
+		boolean encontradoB = false;
+		for (int i = 0; i <= listaPaises.size() - 1; i++) {
+
 			if (listaPaises.get(i).getNombre().equalsIgnoreCase(buscarp)) {
-				
+
 				encontradoPosicion = i + 1;
-				encontradoB=true;
-				
+				encontradoB = true;
+
 			}
-			
-			
+
 		}
-		
+
 		if (encontradoB) {
-			System.out.println("\n"+buscarp+" sí se encuentra en el listado en la posicion"+encontradoPosicion);
-		}else {
-			System.out.println("\n"+buscarp+" no está en el listado de paises");
+			System.out.println("\n" + buscarp + " si se encuentra en el listado en la posicion" + encontradoPosicion);
+		} else {
+			System.out.println("\n" + buscarp + " no esta en el listado de paises");
 
 		}
 		System.out.println("\n\n****************************************************\n\n");
