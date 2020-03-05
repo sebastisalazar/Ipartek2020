@@ -10,8 +10,8 @@ public class PerroDAOImpl implements PerroDAO {
 		super();
 		this.perros = new ArrayList<Perro>();
 
-		this.perros.add(new Perro("Bubba"));
-		this.perros.add(new Perro("Ratplam"));
+		this.perros.add(new Perro("Bubba", 1));
+		this.perros.add(new Perro("Ratplam", 2));
 	}
 
 	@Override
