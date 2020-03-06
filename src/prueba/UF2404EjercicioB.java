@@ -81,14 +81,25 @@ public class UF2404EjercicioB {
 	private static void calcularDNI() {
 		System.out.println("\n******************************");
 		System.out.println("\n\t CALCULO LETRA DNI\n");
-		System.out.print("Introduce los numeros de tu DNI: ");
+		String dni = "";
+		boolean continuar = true;
+		do {
+			try {
+				System.out.print("Introduce los numeros de tu DNI: ");
+				dni = sc.nextLine();
 
-		try {
-			int dni = Integer.parseInt(sc.nextLine());
-			System.out.println("La letra para el dni " + dni + " es: " + LETRASDNI[dni % 23]);
-		} catch (NumberFormatException e) {
-			System.out.println("\nEl dato introducido es incorrecto");
-		} // Fin Try catch
+				if (dni.length() > 7 || dni.length() < 7) {
+					System.out.println("Error, debe contener al menos 8 digitos numéricos");
+					continuar = false;
+				} else {
+					System.out.println("La letra para el dni " + dni + " es: " + LETRASDNI[Integer.parseInt(dni) % 23]);
+				}
+
+			} catch (NumberFormatException e) {
+				System.out.println("\nEl dato introducido es incorrecto, debe sólo 8 digitos numéricos \n");
+				continuar = false;
+			} // Fin Try catch
+		} while (!continuar);
 
 	}// Fin calculo dni
 
