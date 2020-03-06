@@ -17,46 +17,56 @@ public class UF2404EjercicioB {
 	 * 
 	 * @param args
 	 */
+
+	// variables globales
 	static Scanner sc;
 	final static char LETRASDNI[] = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S',
 			'Q', 'V', 'H', 'L', 'C', 'K', 'E' };
 
 	public static void main(String[] args) {
 
+		// Variables
 		int opcion;
 		sc = new Scanner(System.in);
 		boolean continuar = true;
 
+		// Bucle
 		do {
-			pintarMenu();
-			System.out.print("Elige una opcion: ");
-			opcion = Integer.parseInt(sc.nextLine());
 
-			switch (opcion) {
-			case 1:
-				calcularDNI();
-				break;
+			try {
+				pintarMenu();
+				System.out.print("Elige una opcion: ");
+				opcion = Integer.parseInt(sc.nextLine());
+				switch (opcion) {
+				case 1:
+					calcularDNI();
+					break;
 
-			case 2:
-				conversionCmPulgadas();
-				break;
+				case 2:
+					conversionCmPulgadas();
+					break;
 
-			case 3:
-				System.out.println("\nHasta pronto");
-				continuar = false;
-				break;
+				case 3:
+					System.out.println("\nHasta pronto");
+					continuar = false;
+					break;
 
-			default:
-				System.out.println("\nPor favor selecciona una opcion valida");
-				break;
+				default:
+					System.out.println("\nPor favor selecciona una opcion valida");
+					break;
 
-			}// switch
+				}// Fin switch
+
+			} catch (NumberFormatException e) {
+				System.out.println("\nOpcion elegida no es un numero");
+			}
 
 		} while (continuar);
 
-		sc.close();
-	}
+		sc.close(); // Cierre scanner
+	}// Fin main
 
+	// Creacion del menu
 	private static void pintarMenu() {
 		System.out.println("\n******************************");
 		System.out.println("\n\t MENU\n");
@@ -65,25 +75,37 @@ public class UF2404EjercicioB {
 		System.out.println("3. Salir");
 		System.out.println("\n******************************");
 
-	}
+	}// fin pintar menu
 
-	private static void conversionCmPulgadas() {
-		double cm;
-		System.out.println("\n******************************");
-		System.out.println("\n    CONVERSION CM A PULGADAS\n");
-		System.out.print("Introduce los cm: ");
-		cm = Double.parseDouble(sc.nextLine());
-		System.out.println("La conversion de " + cm + "cm a pulgadas es: " + String.format("%.5f", (cm / 2.54)));
-
-	}
-
+	// Calculo letra DNI
 	private static void calcularDNI() {
 		System.out.println("\n******************************");
 		System.out.println("\n\t CALCULO LETRA DNI\n");
 		System.out.print("Introduce los numeros de tu DNI: ");
-		String dni = sc.nextLine();
-		System.out.println("La letra para el dni " + dni + " es: " + LETRASDNI[Integer.parseInt(dni) % 23]);
 
-	}
+		try {
+			int dni = Integer.parseInt(sc.nextLine());
+			System.out.println("La letra para el dni " + dni + " es: " + LETRASDNI[dni % 23]);
+		} catch (NumberFormatException e) {
+			System.out.println("\nEl dato introducido es incorrecto");
+		} // Fin Try catch
 
-}
+	}// Fin calculo dni
+
+	// Conversion a pulgadas
+	private static void conversionCmPulgadas() {
+		double cm;
+
+		try {
+			System.out.println("\n******************************");
+			System.out.println("\n    CONVERSION CM A PULGADAS\n");
+			System.out.print("Introduce los cm: ");
+			cm = Double.parseDouble(sc.nextLine());
+			System.out.println("La conversion de " + cm + "cm a pulgadas es: " + String.format("%.5f", (cm / 2.54)));
+
+		} catch (NumberFormatException e) {
+			System.out.println("\nEl dato introducido es incorrecto");
+		} // Fin Try catch
+	}// Fin conversion cm a pulgadas
+
+}// Fin clase
