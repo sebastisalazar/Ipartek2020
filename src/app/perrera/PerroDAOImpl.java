@@ -21,20 +21,43 @@ public class PerroDAOImpl implements PerroDAO {
 
 	@Override
 	public ArrayList<Perro> buscarPorNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+		ArrayList<Perro> perrosNombre = new ArrayList<Perro>();
+
+		for (int i = 0; i < perros.size(); i++) {
+			if (perros.get(i).getNombre().equalsIgnoreCase(nombre)) {
+				perrosNombre.add(perros.get(i));
+			}
+		} // fin for
+
+		return perrosNombre;
+	}// fin buscarPorNombre
 
 	@Override
 	public ArrayList<Perro> buscarPorRaza(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Perro> perrosRaza = new ArrayList<Perro>();
+
+		for (int i = 0; i < perros.size(); i++) {
+			if (perros.get(i).getRaza().equalsIgnoreCase(nombre)) {
+				perrosRaza.add(perros.get(i));
+			}
+		} // fin for
+
+		return perrosRaza;
 	}
 
 	@Override
 	public Perro getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Perro p = new Perro();
+
+		for (int i = 0; i < perros.size(); i++) {
+			if (perros.get(i).getId() == id) {
+				p = perros.get(i);
+			}
+		} // fin for
+
+		return p;
 	}
 
 	@Override
