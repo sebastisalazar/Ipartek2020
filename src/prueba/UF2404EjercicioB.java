@@ -88,19 +88,22 @@ public class UF2404EjercicioB {
 			System.out.print("Introduce los numeros de tu DNI: ");
 			dni = sc.nextLine();
 
+			// Verifica la longitud introducida
 			if (dni.length() > 8 || dni.length() < 8) {
 
-				System.out.println("\nError, debe contener al menos 8 digitos numéricos\n");
+				System.out.println("\nError, el dato a introducir debe contener 8 digitos numéricos\n");
 				continuar = false;
 			} else {
+				// Si la longitud es correcta, verifica que sean numeros
 				try {
 					System.out.println("La letra para el dni " + dni + " es: " + LETRASDNI[Integer.parseInt(dni) % 23]);
+					continuar = true;
 				} catch (NumberFormatException e) {
-					System.out
-							.println("\nEl dato introducido es incorrecto, NO debe contener ni caracteres ni letra \n");
+					System.out.println(
+							"\nEl dato introducido es incorrecto, NO debe contener ni caracteres ni letras \n");
 					continuar = false;
 				} // Fin Try catch
-			}
+			} // fin if
 
 		} while (!continuar);
 
@@ -109,17 +112,24 @@ public class UF2404EjercicioB {
 	// Conversion a pulgadas
 	private static void conversionCmPulgadas() {
 		double cm;
+		boolean continuar = true;
 
-		try {
-			System.out.println("\n******************************");
-			System.out.println("\n    CONVERSION CM A PULGADAS\n");
+		System.out.println("\n******************************");
+		System.out.println("\n    CONVERSION CM A PULGADAS\n");
+
+		do {
 			System.out.print("Introduce los cm: ");
-			cm = Double.parseDouble(sc.nextLine());
-			System.out.println("La conversion de " + cm + "cm a pulgadas es: " + String.format("%.5f", (cm / 2.54)));
+			try {
+				cm = Double.parseDouble(sc.nextLine());
+				System.out.println(
+						"\nLa conversion de " + cm + "cm a pulgadas es: " + String.format("%.5f", (cm / 2.54)));
+				continuar = true;
+			} catch (NumberFormatException e) {
+				System.out.println("\nError, el dato introducido no es un numero\n");
+				continuar = false;
+			} // Fin Try catch
+		} while (!continuar);
 
-		} catch (NumberFormatException e) {
-			System.out.println("\nEl dato introducido es incorrecto");
-		} // Fin Try catch
 	}// Fin conversion cm a pulgadas
 
 }// Fin clase
