@@ -1,6 +1,7 @@
 package com.ipartek.formacion.metodos;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -16,9 +17,9 @@ public class VueltasTest {
 	@Test
 	public void testCalcularVueltasOptimas() throws Exception {
 
-		// int[] vueltas = Vueltas.calcularVueltasOptimas(100f, 100f);
-		// int[] vueltasCorrectas = new int[Vueltas.BILLETES_MONEDAS.length];
-		// assertArrayEquals(vueltas, vueltasCorrectas);
+		int[] vueltas = Vueltas.calcularVueltasOptimas(100f, 100f);
+		int[] vueltasCorrectas = new int[Vueltas.BILLETES_MONEDAS.length];
+		assertArrayEquals(vueltas, vueltasCorrectas);
 
 		int[] vueltas2 = Vueltas.calcularVueltasOptimas(0.01f, 500.02f);
 		int[] vueltasCorrectas2 = new int[Vueltas.BILLETES_MONEDAS.length];
@@ -30,26 +31,26 @@ public class VueltasTest {
 
 	}
 
-//	@Test
-//	public void testCalcularVueltas() throws Exception {
-//
-//		assertEquals(0, Vueltas.calcularVueltas(100, 100), DELTA);
-//		assertEquals(150.50f, Vueltas.calcularVueltas(150.00f, 300.50f), DELTA);
-//
-//	}
+	@Test
+	public void testCalcularVueltas() throws Exception {
 
-//	@Test(expected = Exception.class)
-//	public void testCalcularVueltasOptimasException() throws Exception {
-//
-//		Vueltas.calcularVueltasOptimas(100, -12);
-//
-//	}
-//
-//	@Test(expected = Exception.class)
-//	public void testCalcularVueltasException() throws Exception {
-//
-//		Vueltas.calcularVueltas(100, -23);
-//
-//	}
+		assertEquals(0, Vueltas.calcularVueltas(100, 100), DELTA);
+		assertEquals(150.50f, Vueltas.calcularVueltas(150.00f, 300.50f), DELTA);
+
+	}
+
+	@Test(expected = Exception.class)
+	public void testCalcularVueltasOptimasException() throws Exception {
+
+		Vueltas.calcularVueltasOptimas(100, -12);
+
+	}
+
+	@Test(expected = Exception.class)
+	public void testCalcularVueltasException() throws Exception {
+
+		Vueltas.calcularVueltas(100, -23);
+
+	}
 
 }
