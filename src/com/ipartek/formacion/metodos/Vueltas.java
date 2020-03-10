@@ -8,9 +8,14 @@ public class Vueltas {
 	public static int[] calcularVueltasOptimas(float importe, float entregado) throws Exception {
 
 		int[] vueltas = new int[BILLETES_MONEDAS.length];
-
+		float v = entregado - importe;
 		// TODO vuestro marron
+		for (int i = 0; i < BILLETES_MONEDAS.length; i++) {
 
+			if (v >= BILLETES_MONEDAS[i]) {
+				vueltas[i] += 1;
+			}
+		}
 		return vueltas;
 
 	}
@@ -18,7 +23,14 @@ public class Vueltas {
 	public static float calcularVueltas(float importe, float entregado) throws Exception {
 		// TODO vuestro marron
 
-		return 0;
+		int[] vueltas = new int[BILLETES_MONEDAS.length];
+		float v = 0;
+
+		if (entregado - importe != 0f) {
+			v = entregado - importe;
+		}
+
+		return v;
 	}
 
 }
