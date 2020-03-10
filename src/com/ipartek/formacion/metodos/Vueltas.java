@@ -12,7 +12,7 @@ public class Vueltas {
 		// TODO vuestro marron
 		for (int i = 0; i < BILLETES_MONEDAS.length; i++) {
 
-			if ((v >= BILLETES_MONEDAS[i]) {
+			if (v >= BILLETES_MONEDAS[i]) {
 				vueltas[i] += 1;
 			}
 		}
