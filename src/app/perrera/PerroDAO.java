@@ -6,13 +6,13 @@ public interface PerroDAO {
 
 	ArrayList<Perro> getAll();
 
-	ArrayList<Perro> buscarPorNombre(String nombre);
+	ArrayList<Perro> buscarPorNombre(String nombre) throws Exception;
 
-	ArrayList<Perro> buscarPorRaza(String nombre);
+	ArrayList<Perro> buscarPorRaza(String nombre) throws Exception;
 
-	Perro getById(int id);
+	Perro getById(int id) throws Exception;
 
-	boolean delete(int id);
+	boolean delete(int id) throws Exception;
 
 	/**
 	 * Creamos un nuevo Perro y genera el nuevo IDentificador

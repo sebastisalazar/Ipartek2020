@@ -35,34 +35,40 @@ public class AppPerrera {
 	static int validarOpcionElegida() {
 		int op = 0;
 		boolean continuar = true;
-		do {// bucle para validar opcion elegida
-			System.out.print("\nElige una opcion: ");
 
-			// Control errores
-			try {
-				op = Integer.parseInt(sc.nextLine());
 
-				// si la opcion elegida no esta entre 1 y 8 muestra mensaje
-				if (op < 1 || op > 8) {
-					System.out.println("\nOpcion no valida, intenta otra vez");
+			do {// bucle para validar opcion elegida
+				System.out.print("\nElige una opcion: ");
+
+				// Control errores
+				try {
+					op = Integer.parseInt(sc.nextLine());
+
+					// si la opcion elegida no esta entre 1 y 8 muestra mensaje
+					if (op < 1 || op > 8) {
+						System.out.println("\nOpcion no valida, intenta otra vez");
+						continuar = false;
+						pintarMenu();
+					} else {
+						// si la opcion esta entre 1 y 8 continua
+						continuar = true;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("\nError, se ha introducido una letra en lugar de un numero \n");
 					continuar = false;
+					System.out.println("\n************************************\n");
 					pintarMenu();
-				} else {
-					// si la opcion esta entre 1 y 8 continua
-					continuar = true;
 				}
-			} catch (NumberFormatException e) {
-				System.out.println("\nError, se ha introducido una letra en lugar de un numero \n");
-				continuar = false;
-				pintarMenu();
-			}
 
-		} while (!continuar);
+			} while (!continuar);
 
 		return op;
 	}// Fin validar opcion
 
 	static void IniciarOpcion(int op) {
+
+		try {
+
 		String nombre,raza;
 		int id;
 		switch (op) {
@@ -106,6 +112,10 @@ public class AppPerrera {
 		default:
 			break;
 		}// fin switch
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}// fin iniciar opcion
 
 	static void ListarPerros(ArrayList<Perro> p) {
