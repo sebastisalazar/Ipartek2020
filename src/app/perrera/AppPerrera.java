@@ -63,7 +63,7 @@ public class AppPerrera {
 	}// Fin validar opcion
 
 	static void IniciarOpcion(int op) {
-		String nombre;
+		String nombre,raza;
 		int id;
 		switch (op) {
 		case 1:
@@ -76,19 +76,32 @@ public class AppPerrera {
 			nombre = sc.nextLine();
 			ListarPerros(dao.buscarPorNombre(nombre));
 			break;
-
 		case 3:
+			System.out.println("\n   OPCION ELEDIGA: BUSCAR POR RAZA\n");
+			System.out.print("\n Raza a buscar: ");
+			raza = sc.nextLine();
+			ListarPerros(dao.buscarPorRaza(raza));
+			break;
+		case 4:
 			System.out.println("\n   OPCION ELEDIGA: BUSCAR POR ID\n");
 			System.out.print("\n ID a buscar: ");
 			id = Integer.parseInt(sc.nextLine());
-			dao.getById(id).toString();
+			ListaPerro(dao.getById(id));
 			break;
+		case 5:
+			System.out.println("\n   OPCION ELEDIGA: BORRAR PERRO\n");
+			ListarPerros(dao.getAll());
+			System.out.print("\n id perro a borrar: ");
+			id = Integer.parseInt(sc.nextLine());
+			boolean resul = dao.delete(id);
 
-		// TODO buscar por ID
-		// TODO pedir al usuario por pantalla el ID
-		// TODO llamar al DAO al metodo getByID y recoger resultado
-		// TODO si resultado != null mostrar perro por pantalla
-		// TODO si resultado= null mostrar que el perro no se ha encontrado
+			if (resul) {
+				System.out.println("\nEl perro con id " + id + "se ha borrado correctamente");
+				ListarPerros(dao.getAll());
+			} else {
+				System.out.println("\nLo sentimos, no se ha encontrado ningun perro con el id " + id);
+			}
+
 
 		default:
 			break;
@@ -100,5 +113,16 @@ public class AppPerrera {
 			System.out.println("\n" + p.get(i).toString());
 		}
 	}// fin listarPerros
+
+	static void ListaPerro(Perro p) {
+
+		if (p != null) {
+			System.out.println("\n" + p.toString());
+		} else {
+			System.out.println("\n\t ID no encontrado");
+		}
+
+	}// fin listarPerros
+
 
 }// FIN CLASE

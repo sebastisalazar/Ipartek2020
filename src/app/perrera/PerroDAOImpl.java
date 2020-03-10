@@ -27,6 +27,8 @@ public class PerroDAOImpl implements PerroDAO {
 		for (int i = 0; i < perros.size(); i++) {
 			if (perros.get(i).getNombre().equalsIgnoreCase(nombre)) {
 				perrosNombre.add(perros.get(i));
+			} else {
+				perrosNombre = null;
 			}
 		} // fin for
 
@@ -34,12 +36,14 @@ public class PerroDAOImpl implements PerroDAO {
 	}// fin buscarPorNombre
 
 	@Override
-	public ArrayList<Perro> buscarPorRaza(String nombre) {
+	public ArrayList<Perro> buscarPorRaza(String raza) {
 		ArrayList<Perro> perrosRaza = new ArrayList<Perro>();
 
 		for (int i = 0; i < perros.size(); i++) {
-			if (perros.get(i).getRaza().equalsIgnoreCase(nombre)) {
+			if (perros.get(i).getRaza().equalsIgnoreCase(raza)) {
 				perrosRaza.add(perros.get(i));
+			} else {
+				perrosRaza = null;
 			}
 		} // fin for
 
@@ -54,6 +58,8 @@ public class PerroDAOImpl implements PerroDAO {
 		for (int i = 0; i < perros.size(); i++) {
 			if (perros.get(i).getId() == id) {
 				p = perros.get(i);
+			} else {
+				p = null;
 			}
 		} // fin for
 
@@ -62,8 +68,16 @@ public class PerroDAOImpl implements PerroDAO {
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean borrado = false;
+		for (int i = 0; i < perros.size(); i++) {
+			if (perros.get(i).getId() == id) {
+				perros.remove(i);
+				borrado = true;
+			}
+		}
+
+		return borrado;
+
 	}
 
 	@Override
