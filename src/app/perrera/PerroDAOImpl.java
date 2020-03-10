@@ -51,6 +51,7 @@ public class PerroDAOImpl implements PerroDAO {
 		for (int i = 0; i < perros.size(); i++) {
 			if (perros.get(i).getRaza().equalsIgnoreCase(raza)) {
 				perrosRaza.add(perros.get(i));
+				encontrado = true;
 			}
 		} // fin for
 
@@ -66,6 +67,13 @@ public class PerroDAOImpl implements PerroDAO {
 
 		Perro p = new Perro();
 		boolean encontrado = false;
+
+		// TODO corregir si se ingresa una letra para que salga el siguiente mensaje
+		if (String.valueOf(id) == null) {
+			throw new Exception("\nSe ha introducido una letra en lugar de numeros" + id);
+		}
+
+
 		for (int i = 0; i < perros.size(); i++) {
 			if (perros.get(i).getId() == id) {
 				p = perros.get(i);
