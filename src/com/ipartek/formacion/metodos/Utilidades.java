@@ -20,32 +20,27 @@ public class Utilidades {
 	 *      IDIOMA_CASTELLANO
 	 * @param nombre
 	 * @param idioma
-	 * @throws Exception
 	 */
 	static String saludar(String nombre, String idioma) throws Exception {
+		String saludo = "";
+		switch (idioma) {
+		case IDIOMA_CASTELLANO:
+			saludo = "Hola " + nombre;
+			break;
+		case IDIOMA_EUSKERA:
+			saludo = "Kaixo " + nombre;
+			break;
+		case IDIOMA_INGLES:
+			saludo = "Hello " + nombre;
+			break;
 
-		String saludo;
-		if (idioma != IDIOMA_CASTELLANO && idioma != IDIOMA_EUSKERA && idioma != IDIOMA_INGLES) {
-			throw new Exception("Idioma no recononido.");
-		} else {
-			switch (idioma) {
-			case IDIOMA_CASTELLANO:
-				saludo = "Hola " + nombre;
-				break;
-			case IDIOMA_EUSKERA:
-				saludo = "Kaixo " + nombre;
-				break;
-			case IDIOMA_INGLES:
-				saludo = "Hello " + nombre;
-				break;
-
-			default:
-				break;
-			}
-			System.out.println("Hola  " + nombre);
+		default:
+			throw new Exception("Idioma no permitido " + idioma);
+		// break;
 		}
-		// si es void el retorno, no hay return
-		return "";
+
+		return saludo;
+
 	}
 
 	static int suma(int a, int b) {
@@ -72,6 +67,40 @@ public class Utilidades {
 			throw new Exception("No es un DNI valido " + dni);
 		}
 		return letra;
+	}
+
+	/**
+	 * Ordena de menor a mayor un array de enteros
+	 * 
+	 * @see https://www.youtube.com/watch?v=lyZQPjUT5B4&t=65s
+	 * @param aDesordenado int[] array desordenado
+	 * @return int[] array ordenado de menor a mayor
+	 */
+	static int[] bubbleShort(int[] aDesordenado) {
+
+		// int[] aDesordenado = { 0, 3, 1, 8 };
+		int[] aOrdenado = new int[aDesordenado.length];
+		aOrdenado = aDesordenado;
+		int auxiliar = 0;
+		boolean ordenado = true;
+		for (int i = 0; i < aOrdenado.length; i++) {
+
+			for (int j = i + 1; j < aOrdenado.length; j++) {
+
+				if (aOrdenado[j] < aOrdenado[i]) {
+					auxiliar = aOrdenado[j];
+					aOrdenado[j] = aOrdenado[i];
+					aOrdenado[i] = auxiliar;
+					ordenado = false;
+				}
+			}
+
+			if (ordenado) {
+				break;
+			}
+		}
+
+		return aOrdenado;
 	}
 
 }
