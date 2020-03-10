@@ -103,4 +103,24 @@ public class Utilidades {
 		return aOrdenado;
 	}
 
+	static int[] bubbleShortJoseba(int[] aDesordenado) {
+
+		int[] aOrdenado = aDesordenado;
+		int aux = 0;
+
+		for (int i = 0; i < (aOrdenado.length - 1); i++) {
+
+			if (aOrdenado[i] > aOrdenado[i + 1]) {
+
+				aux = aOrdenado[i];
+				aOrdenado[i] = aOrdenado[i + 1];
+				aOrdenado[i + 1] = aux;
+				i = 0;
+			}
+
+		}
+
+		return aOrdenado;
+	}
+
 }
