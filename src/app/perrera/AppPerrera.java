@@ -178,7 +178,34 @@ public class AppPerrera {
 					try {
 						System.out.print("\nSelecciona algun perro de la lista (por numero de lista): ");
 						i = Integer.parseInt(sc.nextLine());
-						Perro perroAmodificar = dao.getAll().get(i);
+						Perro perroAmodificar = dao.getAll().get(i - 1);
+						System.out.println("\n************************************\n");
+						System.out.println("\n Perro seleccionado:" + i);
+						ListaPerro(perroAmodificar);
+
+						System.out.println("\n ¿Qué datos desea modificar?\n\n\t1.ID\n\t2.Nombre\n\t3.Raza");
+						System.out.print("\nOpcion: ");
+						int modop = Integer.parseInt(sc.nextLine());
+						int nuevoDatoInt = 0;
+						String nuevoDatoStr = "";
+						switch (modop) {
+						case 1:
+							System.out.print("\nEscribe el nuevo ID: ");
+							nuevoDatoInt = Integer.parseInt(sc.nextLine());
+							perroAmodificar.setId(nuevoDatoInt);
+							break;
+						case 2:
+							System.out.print("\nEscribe el nuevo Nombre: ");
+							nuevoDatoStr = sc.nextLine();
+							perroAmodificar.setNombre(nuevoDatoStr);
+							break;
+						case 3:
+							System.out.print("\nEscribe la nueva Raza: ");
+							nuevoDatoStr = sc.nextLine();
+							perroAmodificar.setRaza(nuevoDatoStr);
+							break;
+						}
+						dao.update(perroAmodificar);
 						continuar = true;
 
 					} catch (Exception e) {
@@ -186,6 +213,10 @@ public class AppPerrera {
 					}
 				} while (!continuar);
 
+				break;
+
+			case 8:
+				op = 8;
 				break;
 
 			}// fin switch

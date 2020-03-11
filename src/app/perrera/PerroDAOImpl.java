@@ -112,6 +112,8 @@ public class PerroDAOImpl implements PerroDAO {
 	@Override
 	public boolean update(Perro p) {
 
+		// getById(p.getId());
+
 		return false;
 	}
 
