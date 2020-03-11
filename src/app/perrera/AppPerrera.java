@@ -95,7 +95,7 @@ public class AppPerrera {
 					id = Integer.parseInt(sc.nextLine());
 					ListaPerro(dao.getById(id));
 				} catch (Exception e) {
-					System.out.println("\nError, un ID sólo contiene numeros");
+					System.out.println("\nError, un ID sï¿½lo contiene numeros");
 				}
 
 				break;
@@ -174,25 +174,36 @@ public class AppPerrera {
 				System.out.println("\nOPCION ELEDIGA: MODIFICAR DATOS\n");
 				ListarPerros(dao.getAll());
 				continuar = false;
+				Perro perroAmodificar = new Perro();
 				do {
 					try {
 						System.out.print("\nSelecciona algun perro de la lista (por numero de lista): ");
 						i = Integer.parseInt(sc.nextLine());
-						Perro perroAmodificar = dao.getAll().get(i - 1);
+						perroAmodificar = dao.getAll().get(i - 1);
 						System.out.println("\n************************************\n");
 						System.out.println("\n Perro seleccionado:" + i);
 						ListaPerro(perroAmodificar);
 
-						System.out.println("\n ¿Qué datos desea modificar?\n\n\t1.ID\n\t2.Nombre\n\t3.Raza");
+						System.out.println("\n ï¿½Quï¿½ datos desea modificar?\n\n\t1.ID\n\t2.Nombre\n\t3.Raza");
 						System.out.print("\nOpcion: ");
 						int modop = Integer.parseInt(sc.nextLine());
 						int nuevoDatoInt = 0;
 						String nuevoDatoStr = "";
 						switch (modop) {
 						case 1:
-							System.out.print("\nEscribe el nuevo ID: ");
-							nuevoDatoInt = Integer.parseInt(sc.nextLine());
-							perroAmodificar.setId(nuevoDatoInt);
+
+							continuar = false;
+							do {
+								System.out.print("\nEscribe el nuevo ID: ");
+								try {
+									nuevoDatoInt = Integer.parseInt(sc.nextLine());
+									perroAmodificar.setId(nuevoDatoInt);
+									continuar = true;
+								} catch (Exception e) {
+									System.out.println("\nError, se ha introducido una letra en lugar de un numero");
+								}
+							} while (!continuar);
+
 							break;
 						case 2:
 							System.out.print("\nEscribe el nuevo Nombre: ");
@@ -206,11 +217,15 @@ public class AppPerrera {
 							break;
 						}
 						dao.update(perroAmodificar);
+
+
 						continuar = true;
 
 					} catch (Exception e) {
-						System.out.println("\nError, no se ha introducido un numero");
+						System.out.println("\nError, solo se aceptan letras");
 					}
+					;
+					ListaPerro(perroAmodificar);
 				} while (!continuar);
 
 				break;
