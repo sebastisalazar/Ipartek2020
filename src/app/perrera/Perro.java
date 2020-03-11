@@ -2,21 +2,19 @@ package app.perrera;
 
 public class Perro {
 
-	int id;
-	String nombre;
-	String raza;
+	// un peroo inicialmente
+	// id 0
+	// nombre ""
+	// raza "cruce"
+
+	int id = 0;
+	String nombre = "";
+	String raza = "Cruce";
 
 	// Constructor
 	public Perro() {
 		super();
-		// un peroo inicialmente
-		// id 0
-		// nombre ""
-		// raza "cruce"
 
-		id = 0;
-		nombre = "";
-		raza = "Cruce";
 	}
 
 	public Perro(String nombre) {
@@ -25,16 +23,13 @@ public class Perro {
 	}
 
 	public Perro(String nombre, int id) {
-		super();
-		this.nombre = nombre;
+		this(nombre);
 		this.id = id;
-		raza = "Cruce";
+
 	}
 
 	public Perro(String nombre, int id, String raza) {
-		super();
-		this.nombre = nombre;
-		this.id = id;
+		this(nombre, id);
 		this.raza = raza;
 	}
 

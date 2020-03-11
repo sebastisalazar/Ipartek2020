@@ -22,11 +22,8 @@ public class PerroDAOImpl implements PerroDAO {
 	@Override
 	public ArrayList<Perro> buscarPorNombre(String nombre) throws Exception {
 
-
 		ArrayList<Perro> perrosNombre = new ArrayList<Perro>();
 		boolean encontrado = false;
-
-
 
 		for (int i = 0; i < perros.size(); i++) {
 			if (perros.get(i).getNombre().equalsIgnoreCase(nombre)) {
@@ -40,7 +37,6 @@ public class PerroDAOImpl implements PerroDAO {
 		} else {
 			return perrosNombre;
 		}
-
 
 	}// fin buscarPorNombre
 
@@ -68,12 +64,6 @@ public class PerroDAOImpl implements PerroDAO {
 		Perro p = new Perro();
 		boolean encontrado = false;
 
-		// TODO corregir si se ingresa una letra para que salga el siguiente mensaje
-		if (String.valueOf(id) == null) {
-			throw new Exception("\nSe ha introducido una letra en lugar de numeros" + id);
-		}
-
-
 		for (int i = 0; i < perros.size(); i++) {
 			if (perros.get(i).getId() == id) {
 				p = perros.get(i);
@@ -89,7 +79,6 @@ public class PerroDAOImpl implements PerroDAO {
 		}
 
 	}
-
 
 	@Override
 	public boolean delete(int id) throws Exception {
@@ -108,19 +97,21 @@ public class PerroDAOImpl implements PerroDAO {
 			return borrado;
 		}
 
-
-
 	}
 
 	@Override
-	public Perro crear(Perro p) {
-		// TODO Auto-generated method stub
-		return null;
+	public Perro crear(Perro p) throws Exception {
+
+		perros.add(p);
+		Perro d;
+		d = getById(p.getId());
+
+		return d;
 	}
 
 	@Override
 	public boolean update(Perro p) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 

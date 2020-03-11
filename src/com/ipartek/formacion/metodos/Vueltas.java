@@ -19,7 +19,6 @@ public class Vueltas {
 
 			for (int i = 0; i < BILLETES_MONEDAS.length; i++) {
 
-
 				if ((entregado - importe) == 0.0f) {
 					i = BILLETES_MONEDAS.length - 1;
 				} else {
@@ -30,7 +29,6 @@ public class Vueltas {
 						vueltasFloat = vueltasFloat - BILLETES_MONEDAS[i];
 						vueltasString = String.valueOf(vueltasFloat);
 
-
 						try {
 							vueltasString = String.valueOf(vueltasFloat).substring(0, 4);
 						} catch (Exception e) {
@@ -39,14 +37,12 @@ public class Vueltas {
 
 						vueltasFloat = Float.valueOf(vueltasString);
 
-
 					}
 				}
 
 			}
 
 		}
-
 
 		return vueltas;
 

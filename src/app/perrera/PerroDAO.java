@@ -19,8 +19,9 @@ public interface PerroDAO {
 	 * 
 	 * @param p
 	 * @return
+	 * @throws Exception
 	 */
-	Perro crear(Perro p);
+	Perro crear(Perro p) throws Exception;
 
 	boolean update(Perro p);
 

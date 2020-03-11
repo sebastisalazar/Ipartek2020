@@ -1,6 +1,8 @@
-package com.ipartek.formacion.clases;
+package com.ipartek.formacion.clases.pruebas;
 
 import java.util.Scanner;
+
+import com.ipartek.formacion.clases.Pais;
 
 public class PaisesPruebas {
 
