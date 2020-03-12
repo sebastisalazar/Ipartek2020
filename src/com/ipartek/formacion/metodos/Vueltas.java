@@ -8,31 +8,17 @@ public class Vueltas {
 	public static int[] calcularVueltasOptimas(float importe, float entregado) throws Exception {
 
 		int[] vueltas = new int[BILLETES_MONEDAS.length];
-		float vueltasFloat = entregado - importe;;
-		String vueltasString = String.valueOf(vueltasFloat).substring(0, 4);
-		;
+		float vueltasFloat = entregado - importe;
 
+		String vueltasString = String.valueOf(vueltasFloat);
 
 		if (entregado < BILLETES_MONEDAS[14]) {
 
 			throw new Exception("EL dinero entregado es negativo");
+
 		} else {
 
 			for (int i = 0; i < BILLETES_MONEDAS.length; i++) {
-
-				if (vueltasFloat == 0.0f) {
-					i = BILLETES_MONEDAS.length - 1;
-				} else {
-					
-					if (vueltasFloat >= BILLETES_MONEDAS[i]) {
-
-						vueltas[i] += 1;
-						vueltasFloat = vueltasFloat - BILLETES_MONEDAS[i];
-
-						vueltasString = String.valueOf(vueltasFloat);
-
-					}
-				}
 
 			}
 
