@@ -3,43 +3,38 @@ package com.ipartek.formacion.animales;
 public class Animal {
 
 	// variables locales
-	private String nombre;
+	private String genero;
 	public static final String[] TIPO = { "Mamimefero", "Ave", "Pez" };
 	private String tipo;
-	private int patas;
 
-	// CONSTRUCTOR
+	// CONSTRUCTORES
 	public Animal() {
 		super();
-		this.nombre = "";
+		this.genero = "";
 		this.tipo = "";
-		this.patas = 0;
 	}
 
+	public Animal(String tipo) {
+		super();
+		this.genero = "";
+		this.tipo = tipo;
+	}
 
 	// GETTERS AND SETTERS
 
 	public String getGenero() {
-		return nombre;
+		return genero;
 	}
 
 	public void setGenero(String genero) {
-		this.nombre = genero;
-	}
-
-	public int getPatas() {
-		return patas;
-	}
-
-	public void setPatas(int patas) {
-		this.patas = patas;
+		this.genero = genero;
 	}
 
 	// TO STRING
 
 	@Override
 	public String toString() {
-		return "Animal [nombre=" + nombre + ", tipo=" + tipo + ", patas=" + patas + "]";
+		return "genero=" + genero + ", tipo=" + tipo;
 	}
 
 }

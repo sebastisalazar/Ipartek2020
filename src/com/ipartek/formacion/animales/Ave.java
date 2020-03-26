@@ -1,17 +1,17 @@
 package com.ipartek.formacion.animales;
 
-public class Ave extends Mamifero {
+public class Ave extends Animal {
 
-	private String tipo;
+	// CONSTRUCTOR
 	public Ave() {
-		super();
-		tipo = "";
-		// TODO Auto-generated constructor stub
+		super(Animal.TIPO[1]);
+
 	}
 
-	public Ave(String tipo) {
-		super(tipo);
-		// TODO Auto-generated constructor stub
+	// TOSTRING
+	@Override
+	public String toString() {
+		return super.toString();
 	}
 
 }

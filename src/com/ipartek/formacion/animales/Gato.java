@@ -4,53 +4,27 @@ public class Gato extends Mamifero {
 
 	// variable globales privadas
 
-	String nombre;
-
-
+	private String nombre;
 
 	// CONSTRUCTOR
 	public Gato() {
-		super(Mamifero.TIPO[0]);
-		this.color = "";
-		this.raza = "";
+		super();
+		this.nombre = "";
 	}
 
 	// GETTERS AND SETTERS
-
-
-
-	public String getColor() {
-		return color;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getRaza() {
-		return raza;
-	}
-
-	public void setRaza(String raza) {
-		this.raza = raza;
-	}
-
-	public boolean isPelo() {
-		return pelo;
-	}
-
-	public void setPelo(boolean pelo) {
-		this.pelo = pelo;
-	}
-
+	// TOSTRING
 	@Override
 	public String toString() {
-		return "Gato [color=" + color + ", raza=" + raza + ", pelo=" + pelo + ", toString()=" + super.toString() + "]";
+		return "nombre=" + nombre + "," + super.toString();
 	}
-
-	// TO STRING
-
-
-
 
 }

@@ -5,7 +5,6 @@ public class Mamifero extends Animal {
 	// encapsulamiento
 
 	// variable globlal
-	private String tipo;
 	private int orejas;
 	private int patas;
 	private boolean cola;
@@ -14,17 +13,9 @@ public class Mamifero extends Animal {
 	private boolean pelo;
 	// variable publica
 
-
-
-	// CONSTRUCTORES
-	public Mamifero(String tipo) {
-		super();
-		this.tipo = tipo;
-	}
-
+	// CONSTRUCTOR
 	public Mamifero() {
-		super();
-		this.tipo = "";
+		super(Animal.TIPO[0]);
 		this.orejas = 2;
 		this.patas = 2;
 		this.cola = true;
@@ -33,15 +24,7 @@ public class Mamifero extends Animal {
 		this.pelo = true;
 	}
 
-
 	// GETTERS AND SETTERS
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 
 	public int getOrejas() {
 		return orejas;
@@ -91,16 +74,12 @@ public class Mamifero extends Animal {
 		this.pelo = pelo;
 	}
 
-	@Override
-	public String toString() {
-		return "Mamifero [tipo=" + tipo + ", orejas=" + orejas + ", patas=" + patas + ", cola=" + cola + ", color="
-				+ color + ", raza=" + raza + ", pelo=" + pelo + ", toString()=" + super.toString() + "]";
-	}
-
-
 	// TO STRING
 
-
-
+	@Override
+	public String toString() {
+		return "orejas=" + orejas + ", patas=" + patas + ", cola=" + cola + ", color=" + color + ", raza=" + raza
+				+ ", pelo=" + pelo + ", " + super.toString();
+	}
 
 }
