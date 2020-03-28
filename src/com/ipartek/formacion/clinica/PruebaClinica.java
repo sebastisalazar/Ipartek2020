@@ -37,6 +37,11 @@ public class PruebaClinica {
 				}
 			} while (continuar);
 
+			// TODO Implementar switch case
+			// TODO implementar funcion Registrar Mascota
+			// TODO implementar buscar mascotas por id
+			// TODO implementar ver historial de mascota
+
 		} while (continuar);
 
 		System.out.println("");
