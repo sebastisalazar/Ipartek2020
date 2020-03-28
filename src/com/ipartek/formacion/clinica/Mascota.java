@@ -71,8 +71,8 @@ public class Mascota extends Clinica {
 	// toSTRING
 	@Override
 	public String toString() {
-		return "Mascota nombre=" + nombre + ", especie=" + especie + ", raza=" + raza + ", edad=" + edad
-				+ ", id Mascota=" + idMascota + ", " + super.toString();
+		return "Mascota_nombre=" + nombre + ", especie=" + especie + ", raza=" + raza + ", edad=" + edad
+				+ ", id_Mascota=" + idMascota + ", " + super.toString();
 	}
 
 }

@@ -31,7 +31,7 @@ public class Clinica {
 
 	@Override
 	public String toString() {
-		return "Clinica cif=" + cif + ", direccion clinica=" + direccion;
+		return "Clinica_cif=" + cif + ", direccion_clinica=" + direccion;
 	}
 
 }

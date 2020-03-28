@@ -84,8 +84,9 @@ public class Revision extends Clinica {
 
 	@Override
 	public String toString() {
-		return "Revision fecha" + fechaRevision + ", id_Doctor=" + idDoctor + " id_Mascota=, motivo=" + motivo
-				+ ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + super.toString();
+		return "Revision_fecha= " + fechaRevision + ", id_Doctor=" + idDoctor + " id_Mascota=, motivo=" + motivo
+				+ ", diagnostico_mascota=" + diagnostico + ", tratamiento_mascota=" + tratamiento + ", "
+				+ super.toString();
 	}
 
 }
