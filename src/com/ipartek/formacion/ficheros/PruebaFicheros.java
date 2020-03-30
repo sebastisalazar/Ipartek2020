@@ -18,9 +18,11 @@ public class PruebaFicheros {
 
 		cargarLista();
 		continuar = true;
+
+		// bucle para seguir mostrando el menu
 		do {
 			menu();
-			int op = validarOpcion();
+			int op = validarOpcion();// Asegura que el usuario eliga una opcion valida
 
 			switch (op) {
 			case 1:
@@ -39,7 +41,7 @@ public class PruebaFicheros {
 				break;
 			}// fin switch
 
-			continuar = Seguir();
+			continuar = Seguir();// pregunta al usuario para poder continuar
 
 		} while (continuar);
 
@@ -61,18 +63,20 @@ public class PruebaFicheros {
 	// PREGUNTA AL USUARIO
 	static boolean Seguir() {
 
-		boolean seguir = false;
-		continuar = false;
-		do {
+		boolean seguir = false; // boolean para guardar la respuesta del usuario
+		continuar = false;// se iniciciliza para que no coja el valor anterior
+		do {// bucle para repetir hasta que el usuario introduzca una letra valida
 			System.out.print("\n\n¿Deseas continuar? (s/n): ");
 			String resp = sc.nextLine();
-			if (resp.equalsIgnoreCase("s")) {
+			if (resp.equalsIgnoreCase("s")) {// si es 's' guarda la opcion en seguir y pone a false la variable
+												// continuar para parar el bucle
 				seguir = true;
 				continuar = false;
-			} else if (resp.equalsIgnoreCase("n")) {
+			} else if (resp.equalsIgnoreCase("n")) {// si es 'n' guarda la opcion en seguir y pone a false la variable
+													// continuar para parar el bucle
 				seguir = false;
 				continuar = false;
-			} else {
+			} else { // si no es ni 's' ni 'n' enseña el mensaje
 				System.out.println("Error, opcion no reconocida");
 				continuar = true;
 			}
@@ -111,21 +115,26 @@ public class PruebaFicheros {
 	static void cargarLista() {
 
 		try {
-			BufferedReader br;
-			FileReader fr = new FileReader("bin/com/ipartek/formacion/ficheros/personas.txt");
-			br = new BufferedReader(fr);
+			BufferedReader br; // buffer
+			FileReader fr = new FileReader("bin/com/ipartek/formacion/ficheros/personas.txt"); // archivo a leer
+			br = new BufferedReader(fr); // se indica el buffer qué archivo va a leer
+
 			String linea = br.readLine();// lee cabecera
 
-			while (br.readLine() != null) {
+			while (br.readLine() != null) { // mientras siga habiendo lineas que leer
 
-				linea = br.readLine();
-				String[] datos = linea.split(";");
-				Persona p = new Persona();
+				linea = br.readLine(); // guarda la linea donde se encuentra y la guarda en un string
+				String[] datos = linea.split(";");// se hace un split de la variable linea y se guarda en un array de
+													// Strings
+				Persona p = new Persona();// se crea objeto Persona
 
-				if (datos.length != 6) {
-					personasNoLeidas++;
+				if (datos.length != 6) { // si la longitud del array datos no es 6 significa que esa linea le falta
+											// algun campo por rellenar, por tanto no se guarda
+					personasNoLeidas++;// contamos la lineas que les faltan datos
 				} else {
-					personasLeidasOK++;
+					personasLeidasOK++;// se cuentan las lineas que esten bien y tengan todos los datos
+
+					// se rellena el objeto segun los campos recogidos en el array datos
 					p.setNombre(datos[0]);
 					p.setEmpresa(datos[1]);
 					p.setFechaNacimiento(datos[2]);
@@ -133,15 +142,16 @@ public class PruebaFicheros {
 					p.setEmail(datos[4]);
 					p.setNumeroPersonal(datos[5]);
 
-					listaPersonas.add(p);
+					listaPersonas.add(p);// Se añade a la lista una vez el objeto tenga todos los datos rellenados
 
 				}
 
 			}
-			br.close();
+			br.close();// cierre del buffer
 
+			// INFO para saber cuantas NO se han leido
 			System.out.println("\nPersonas leidas: " + personasLeidasOK);
-			System.out.println("Personas NO leidas (les falta algun dato): " + personasNoLeidas + "\n");
+			System.out.println("Personas NO leidas por falta de algun dato: " + personasNoLeidas + "\n");
 
 		} catch (IOException e) {
 
@@ -155,7 +165,7 @@ public class PruebaFicheros {
 	// IMPRIMIR LISTA
 	static void listarPersonas() {
 
-		int i = 1;
+		int i = 1;// variable para sacar el indice por linea
 		for (Persona persona : listaPersonas) {
 			System.out.println("\n" + i + ".- " + persona.toString());
 			i++;
@@ -166,7 +176,7 @@ public class PruebaFicheros {
 	// LISTAR PERSONA/AS, RECIBE COMO PARAMETRO ARRAY LIST DE PERSONAS
 	static void listarPersonas(ArrayList<Persona> p) {
 
-		// si la lista que se pasa por parametro esta vacia
+		// si la lista que se pasa por parametro esta vacia enseña mensaje
 		if (p == null) {
 			System.out.print("\n\nNo se han encontrado coincidencias");
 		} else { // si no esta vacia se imprime los datos
@@ -186,31 +196,31 @@ public class PruebaFicheros {
 		// si el objeto que se pasa por parametro esta vacio
 		if (p == null) {
 			System.out.print("\n\nNo se han encontrado coincidencias");
-		} else {
+		} else {// si el objeto no esta vacio se imprime
 			System.out.print("\n" + p.toString());
 		}
 
 	}
 
 	// BUSCAR POR NOMBRE
-
-	// BUSCAR POR NOMBRE
 	static ArrayList<Persona> buscarPorNombre() {
 
 		System.out.print("\nEscribe el nombre a buscar: ");
 		String nombre = sc.nextLine();
+
 		// Array list por si existiese personas con el mismo nombre
 		ArrayList<Persona> resultado = new ArrayList<Persona>();
 		int coincidencias = 0; // para saber si al menos existe una persona con ese nombre
 
 		for (Persona persona : listaPersonas) {
+			// si el nombre del objeto persona coincide
 			if (persona.getNombre().equalsIgnoreCase(nombre)) {
-				resultado.add(persona);
-				coincidencias += 1;
+				resultado.add(persona);// se agrega la objeto persona al array list
+				coincidencias += 1;// se suma las coincidencias (num personas con ese nombre)
 			}
 		}
 
-		// si no hay ninguna coincidencia con el nombre se da el valor a null
+		// si no hay ninguna persona con ese nombre se da el valor a null
 		if (coincidencias == 0) {
 			resultado = null;
 		}
@@ -222,16 +232,20 @@ public class PruebaFicheros {
 	static Persona buscarPorEmail() {
 		System.out.print("\nEscribe el email a buscar: ");
 		String email = sc.nextLine();
-		Boolean encontrado = false;
+		Boolean encontrado = false; // para saber si el email se ha encontrado
 
 		Persona p = new Persona();
 
 		for (Persona persona : listaPersonas) {
+			// si el mail del objeto persona es el que se esta buscando
 			if (persona.getEmail().equalsIgnoreCase(email)) {
-				p = persona;
-				encontrado = true;
+				p = persona; // se copia el objeto
+				encontrado = true;// se avisa que se ha encontrado
 			}
 		}
+
+		// si encontrado es false significa que no existe una persona con ese mail, por
+		// lo tanto se iniicializa el objeto persona a null
 		if (encontrado == false) {
 			p = null;
 		}
@@ -244,22 +258,27 @@ public class PruebaFicheros {
 	static Persona buscarPorLinea() {
 
 		Persona p = new Persona();
-		continuar = true;
-		do {
-			try {
+		continuar = true;// se inicializa para que no coja el valor de la ultima vez que se utilizo∫
+		do {// bucle para que el usuario escriba una linea valida
+			try {// excepcion para que el usuario no introduzca una letra, numeros negativos o
+					// caracteres
 				System.out.print("\nEscribe la linea a buscar: ");
 				int numlinea = Integer.parseInt(sc.nextLine());
+
+				// Si el usuario indica la linea 0 ó superior a la longitud (el total de
+				// personas en la lista) muestra mensaje
 				if (numlinea == 0 || numlinea > listaPersonas.size()) {
 					System.out.print("Error, linea no valida\n");
 				} else {
+					// si la linea es valida se copia el objeto que exista en esa linea
 					p = listaPersonas.get(numlinea - 1);
-					continuar = false;
+					continuar = false;// se inicializa para romper el bucle
 
 				}
 
 			} catch (Exception e) {
 				System.out.print("Error, se debe introducir un numero entero positivo\n");
-			}
+			} // fin try catch
 		} while (continuar);
 
 		return p;
